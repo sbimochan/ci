@@ -33,13 +33,30 @@ public function __construct()
         $this->db->delete('tasks');
     }
     public function edit($id){
+        $this->load->helper('url');
         $data=array(
             'name'=>$this->input->post('name'),
             'address'=>$this->input->post('address'),
             'dob'=>$this->input->post('dob'),
             'contact'=>$this->input->post('contact')
         );
-        $this->db->where('id',$id);
-        $this->db->update('tasks',$data);
+//        $this->db->where('id',$id);
+//        $this->db->update('tasks',$data);
+        if ($id == 0) {
+            return $this->db->insert('tasks', $data);
+        } else {
+            $this->db->where('id', $id);
+            return $this->db->update('tasks', $data);
+        }
     }
+
+    function getdatas($id){
+
+//        $sql = "SELECT * from tasks where id = $id";
+        $query=$this->db->get_where('tasks', ['id'=>$id]);
+//        $query = $this->db->query($sql)->result();
+
+        return $query->result();
+    }
+
 }
