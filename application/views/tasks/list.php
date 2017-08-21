@@ -26,7 +26,7 @@
                 Edit</a>
 
                 <button class="btn btn-danger delete" data-bimochan="<?php echo $task['id']?>">
-                  <i class="glyphicon glyphicon-remove"></i></button>
+                <i class="fa fa-times" aria-hidden="true"></i></button>
 
 
               </td>

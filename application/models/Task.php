@@ -40,8 +40,7 @@ public function __construct()
             'dob'=>$this->input->post('dob'),
             'contact'=>$this->input->post('contact')
         );
-//        $this->db->where('id',$id);
-//        $this->db->update('tasks',$data);
+
         if ($id == 0) {
             return $this->db->insert('tasks', $data);
         } else {

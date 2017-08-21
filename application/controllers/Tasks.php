@@ -18,11 +18,23 @@ class Tasks extends CI_Controller
     }
     public function index(){
 
-        $data['tasks']=$this->task->listout();
-        $data['title']='index page';
-        $this->load->view('templates/header',$data);
-        $this->load->view('tasks/index',$data);
-        $this->load->view('templates/footer',$data);
+        // $data['tasks']=$this->task->listout();
+        // $data['title']='index page';
+        $this->load->view('templates/header');
+          $this->load->view('templates/navbar');
+        $this->load->view('tasks/index');
+
+        $this->load->view('templates/footer');
+    }
+    public function form(){
+
+              $data['tasks']=$this->task->listout();
+              $data['title']='index page';
+              $this->load->view('templates/header',$data);
+                $this->load->view('templates/navbar');
+              $this->load->view('tasks/forms',$data);
+
+              $this->load->view('templates/footer',$data);
     }
 
     public function store(){
@@ -34,15 +46,16 @@ class Tasks extends CI_Controller
         $this->form_validation->set_rules('dob','DOB','required');
         $this->form_validation->set_rules('contact','Contact','required|numeric');
         if($this->form_validation->run()===false){
-            $this->load->view('templates/header',$data);
-            $this->load->view('tasks/index');
-            $this->load->view('templates/footer');
+            $res['status'] = 0;
+            $res['message'] = validation_errors();
         }else{
             $this->task->store();
-            $this->load->view('tasks/success');
-
+            $res['status'] = 1;
+            $res['message'] = "successfully added data.";
         }
-
+        header("content-type: application/json");
+        echo json_encode($res);
+        exit;
     }
     public function delete_row($id){
         $this->load->model("task");
@@ -67,6 +80,7 @@ class Tasks extends CI_Controller
         if($this->form_validation->run()===false){
             //echo "false";
             $this->load->view('templates/header');
+              $this->load->view('templates/navbar');
             $this->load->view('tasks/edit',$data);
             $this->load->view('templates/footer');
         }else{
@@ -84,6 +98,7 @@ class Tasks extends CI_Controller
         $data['records'] = $this->task->getdatas($id);
 
         $this->load->view('templates/header');
+          $this->load->view('templates/navbar');
         $this->load->view('tasks/show',$data);
         $this->load->view('templates/footer');
     }
