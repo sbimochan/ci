@@ -47,8 +47,8 @@ class Tasks extends CI_Controller
     public function delete_row($id){
         $this->load->model("task");
         $this->task->delete($id);
-        return redirect('tasks/');
-    }
+
+      }
 
     public function edit_row($id){
         if (empty($id))
@@ -90,6 +90,6 @@ class Tasks extends CI_Controller
     function loadView(){
         $data['tasks']=$this->task->listout();
         echo $this->load->view('tasks/list',$data,true);
-        exit;       
+        exit;
     }
 }

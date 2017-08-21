@@ -17,54 +17,50 @@
             width: '500px',
             modal: true
         });
-
-
         $('#datepicker').datepicker({
             dateFormat:'yy-mm-dd'
         });
-
     } );
     $( "#opener" ).on( "click", function() {
         $( "#firstform" ).dialog( "open" );
     });
-    $(document).ready(function () {
-        $('#firstform').submit(function(event){
-            var formData={
-                'name':$('input[name=name]').val(),
-                'address':$('input[name=address]').val(),
-                'dob':$('input[name=dob]').val(),
-                'contact':$('input[name=contact]').val()
-            };
+    $(document).ready(function() {
+    			$('#firstform').submit(function(event) {
+    				var formData = $(this).serializeArray();
+    				$.ajax({
+    					type: 'POST',
+    					url: '<?php echo base_url('tasks/store')?>',
+    					data: formData,
+    					encode: true,
+    					success: function() {
+    						$("#firstform").dialog("close");
+    						$('#resulttable').load("<?php echo base_url('tasks/loadView');?>");
+                $('#firstform').trigger("reset");
+    					}
+    				})
+    				event.preventDefault();
+    			});
+
+        $(document).on("click", ".delete", function(){
+          var id = $(this).data("bimochan");
+          if(confirm('Are you sure delete this data?')){
             $.ajax({
-                type:'POST',
-                url:'<?php echo site_url('tasks/store')?>',
-                data:formData,
-                dataType:'json',
-                encode:true,
+              url : "<?php echo base_url('tasks/delete_row');?>/"+id,
+              type: "POST",
+              // dataType: "JSON",
+              success: function(data)
+              {
+                $("#"+id).remove();
 
-                // success:window.location.href=
-                // "<?php echo site_url('tasks')?>"
-               // success:alert('success')+$('#firstform').trigger('reset')
-               // success:$("#firstform").dialog("close")
-               // success:$.load("<?php echo base_url('tasks/loadView') ?>",
-               //  function(data){
-               //      $("#resulttable").html(data);
-               //  })
-            success:$('#resulttable')
-            .load("<?php echo base_url('tasks/loadView');?>")+$("#firstform").dialog("close")
-
-              // window.location.href("<?php echo site_url('tasks/')?>";
-            })
-            event.preventDefault();
-
-
-
+              },
+              error: function (jqXHR, textStatus, errorThrown)
+              {
+                  alert('Error deleting data');
+              }
+          });
+          }
         });
-
     });
-
-
-
 </script>
 </body>
 <footer>
