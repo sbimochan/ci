@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.min.css'?>">
     <!-- Google fonts - Roboto -->
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/css/google-font.css'?>">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/style.default.css'?>" id="theme-stylesheet">
     <!-- jQuery Circle-->
@@ -25,9 +25,9 @@
     <link rel="shortcut icon" href="img/favicon.ico">
     <!-- Font Awesome CDN-->
     <!-- you can replace it by local Font Awesome-->
-    <script src="https://use.fontawesome.com/99347ac47f.js"></script>
+    <script src="<?php echo base_url().'assets/js/font-awesome.js'?>"></script>
     <!-- Font Icons CSS-->
-    <link rel="stylesheet" href="https://file.myfontastic.com/da58YPMQ7U5HY8Rb6UxkNf/icons.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/myfontastic-icons.css') ?>">
 
 </head>
 <body>

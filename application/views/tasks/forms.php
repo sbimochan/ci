@@ -18,13 +18,13 @@
 
       <?php echo form_open('','class="firstform popform" id="firstform"')?>
               <label for="name">Name</label>
-              <input class="form-control" name="name">
+              <input class="form-control" name="name" >
               <label for="address">Address</label>
-              <input  class="form-control" name="address">
+              <input  class="form-control" name="address" >
               <label for="dob">DOB</label>
-              <input  class="form-control" id="datepicker" name="dob">
+              <input  class="form-control" id="datepicker" name="dob" >
               <label for="contact">Contact</label>
-              <input type="number" class="form-control" name="contact">
+              <input type="number" class="form-control" name="contact" >
               <button class="btn btn-success">submit</button>
 
           </form>
@@ -41,6 +41,5 @@
           ?>
       </div>
       <button id="opener" class="btn btn-success"> fire form</button>
-
     </div>
   </section>

@@ -2,7 +2,7 @@
     <nav class="side-navbar">
       <div class="side-navbar-wrapper">
         <div class="sidenav-header d-flex align-items-center justify-content-center">
-          <div class="sidenav-header-inner text-center"><img src="<?php echo site_url('assets/img/avatar-1.jpg')?>" alt="person" class="img-fluid rounded-circle">
+          <div class="sidenav-header-inner text-center"><img src="<?php echo base_url().'assets/img/avatar-1.jpg'?>" alt="person" class="img-fluid rounded-circle">
             <h2 class="h5 text-uppercase">Anderson Hardy</h2><span class="text-uppercase">Web Developer</span>
           </div>
           <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">D</strong></a></div>
@@ -75,17 +75,17 @@
             <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
               <ul aria-labelledby="notifications" class="dropdown-menu">
                 <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
-                    <div class="msg-profile"> <img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
+                    <div class="msg-profile"> <img src="<?php echo base_url().'assets/img/avatar-1.jpg'?>" alt="..." class="img-fluid rounded-circle"></div>
                     <div class="msg-body">
                       <h3 class="h5">Jason Doe</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
                     </div></a></li>
                 <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
-                    <div class="msg-profile"> <img src="img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle"></div>
+                    <div class="msg-profile"> <img src="<?php echo base_url().'assets/img/avatar-2.jpg'?>" alt="..." class="img-fluid rounded-circle"></div>
                     <div class="msg-body">
                       <h3 class="h5">Frank Williams</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
                     </div></a></li>
                 <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
-                    <div class="msg-profile"> <img src="img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle"></div>
+                    <div class="msg-profile"> <img src="<?php echo base_url().'assets/img/avatar-3.jpg'?>" alt="..." class="img-fluid rounded-circle"></div>
                     <div class="msg-body">
                       <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
                     </div></a></li>

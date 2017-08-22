@@ -54,6 +54,7 @@ class Tasks extends CI_Controller
             $res['message'] = "successfully added data.";
         }
         header("content-type: application/json");
+        // $delim=explode('<p>',$res['message']);
         echo json_encode($res);
         exit;
     }

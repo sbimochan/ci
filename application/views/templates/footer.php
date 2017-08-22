@@ -12,17 +12,18 @@
         </div>
       </footer>
     </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="<?php echo base_url().'assets/js/jquery.min.js'?>"></script>
     <script src="<?php echo base_url().'assets/js/tether.min.js' ?>"></script>
     <script src="<?php echo base_url().'assets/js/bootstrap.min.js' ?>"></script>
     <script src="<?php echo base_url().'assets/js/jquery.cookie.js' ?>"> </script>
     <script src="<?php echo base_url().'assets/js/grasp_mobile_progress_circle-1.0.0.min.js' ?>"></script>
     <script src="<?php echo base_url().'assets/js/jquery.nicescroll.min.js' ?>"></script>
     <script src="<?php echo base_url().'assets/js/jquery.validate.min.js' ?>"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="<?php echo base_url().'assets/js/chart.min.js'?>"></script>
     <script src="<?php echo base_url().'assets/js/charts-home.js' ?>"></script>
     <script src="<?php echo base_url().'assets/js/front.js' ?>"></script>
-<script src="<?php echo base_url().'assets/js/jquery-ui.js' ?>"></script>
+    <script src="<?php echo base_url().'assets/js/jquery-ui.js' ?>"></script>
+    <script src="<?php echo base_url().'assets/js/lobibox.js' ?>"></script>
 
 <script>
     $( function popform(){
@@ -51,13 +52,31 @@
     					url: '<?php echo base_url('tasks/store')?>',
     					data: formData,
     					encode: true,
-    					success: function() {
-    						$("#firstform").dialog("close");
+    					success: function(response) {
+
+                if (status = 1) {
+                  $("#firstform").dialog("close");
+                }
     						$('#resulttable').load("<?php echo base_url('tasks/loadView');?>");
                 $('#firstform').trigger("reset");
+                var messages = response.message.split("<p>");
+
+                for (i = 0; i < messages.length; i++) {
+                  //msg += validations[i];
+                  if (messages[i]) {
+                    Lobibox.notify('warning', {
+                      size:'mini',
+                      rounded:true,
+                      delayIndicator:true,
+                      msg: messages[i]
+                });
+                  }
+
+          }
     					}
     				})
     				event.preventDefault();
+
     			});
 
         $(document).on("click", ".delete", function(){
@@ -67,9 +86,11 @@
               url : "<?php echo base_url('tasks/delete_row');?>/"+id,
               type: "POST",
               // dataType: "JSON",
-              success: function(data)
-              {
-                $("#"+id).remove();
+              success: function(response){
+
+              //var messages = response.message.split("</p>");
+                //console.log(messages);
+               $("#"+id).remove();
 
               },
               error: function (jqXHR, textStatus, errorThrown)
@@ -80,6 +101,7 @@
           }
         });
     });
+
 </script>
 </body>
 <footer>
